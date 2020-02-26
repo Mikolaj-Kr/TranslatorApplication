@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MainSiteController {
+public class SupportedLanguagesSiteController {
 
-  @RequestMapping("/translator-main")
+  @RequestMapping("/translator-supported-languages")
   public ModelAndView getMainSite(){
     Map<String, Object> params = new HashMap<>();
-  return new ModelAndView("main-site", params);
+    return new ModelAndView("supported-languages-site", params);
   }
 
 }
