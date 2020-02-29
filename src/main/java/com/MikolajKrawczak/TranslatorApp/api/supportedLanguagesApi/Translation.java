@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Translation {
 
   @JsonProperty("cs")
@@ -21,6 +22,10 @@ public class Translation {
 
   @JsonProperty("fr")
   private Language french;
+
+  @JsonProperty("pl")
+  private Language polish;
+
 
 }
 

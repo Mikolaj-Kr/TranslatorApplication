@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-@JsonIgnoreProperties({"transliteration", "dictionary"})
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class LanguagesApi {
 
   @JsonProperty("translation")
