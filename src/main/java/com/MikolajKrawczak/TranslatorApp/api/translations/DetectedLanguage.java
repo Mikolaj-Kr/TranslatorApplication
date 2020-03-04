@@ -10,4 +10,5 @@ public class DetectedLanguage {
 
     @JsonProperty("language")
     String language;
+
 }
