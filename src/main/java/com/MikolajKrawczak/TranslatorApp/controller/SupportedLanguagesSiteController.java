@@ -21,6 +21,7 @@ public class SupportedLanguagesSiteController {
   public ModelAndView getMainSite() throws JsonProcessingException, UnirestException {
     Map<String, Object> params = new HashMap<>();
     params.put("languages", languagesService.getSupportedLanguages());
+    params.put("site", "languages");
 
     return new ModelAndView("supported-languages-site", params);
   }

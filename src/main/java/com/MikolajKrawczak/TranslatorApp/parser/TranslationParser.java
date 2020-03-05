@@ -13,11 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -34,24 +30,18 @@ public class TranslationParser {
         HttpResponse<String> response;
 
         if (translationFrom.equals("noInfo")) {
-            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "subscriptionKey")
+            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "&Subscription-Key=8d041a0868da453da89273a86b6d9262")
                     .header("Content-type", "application/json")
                     .body(jsonInputString)
                     .asString();
         } else {
-            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "&from=" + translationFrom + "subscriptionKey")
+            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "&from=" + translationFrom + "&Subscription-Key=8d041a0868da453da89273a86b6d9262")
                     .header("Content-type", "application/json")
                     .body(jsonInputString)
                     .asString();
         }
 
-        List<String> array = new ArrayList<String>();
-
-        List<String> responseArray = List.of(response.getBody());
-
-
-        String responseBody = String.join("", responseArray).replaceAll("]","").replaceAll("\\[","");
-
+        String responseBody = response.getBody().replaceAll("\\[", "").replaceAll("]", "");
 
         logger.info(responseBody);
         return objectMapper.readValue(responseBody, TranslationsApi.class);
