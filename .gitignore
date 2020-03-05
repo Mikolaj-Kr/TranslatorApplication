@@ -26,3 +26,6 @@ hs_err_pid*
 target
 intellij-java-google-style.xml
 HTMLv
+
+# text file, where api key can keep
+*.txt
