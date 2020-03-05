@@ -11,6 +11,6 @@ public class ApiKeyReader {
     public String readApiKey(){
         StringBuilder stringBuilder = new StringBuilder();
 
-        try (Stream<String> stream = Files.)
+//        try (Stream<String> stream = Files.)
     }
 }
