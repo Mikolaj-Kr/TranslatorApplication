@@ -27,6 +27,7 @@ public class LanguagesService {
         languages.add(languagesApi.getLanguages().getGerman());
         languages.add(languagesApi.getLanguages().getPolish());
         languages.add(languagesApi.getLanguages().getSpanish());
+        languages.add(languagesApi.getLanguages().getRussian());
 
         return languages;
     }

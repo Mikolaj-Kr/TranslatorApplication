@@ -8,13 +8,13 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Language {
 
-  @JsonProperty("name")
-  String name;
+    @JsonProperty("name")
+    String name;
 
-  @JsonProperty("nativeName")
-  String nativeName;
+    @JsonProperty("nativeName")
+    String nativeName;
 
-  @JsonProperty("dir")
-  String dir;
+    @JsonProperty("dir")
+    String dir;
 
 }

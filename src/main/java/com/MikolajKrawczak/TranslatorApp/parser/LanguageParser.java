@@ -23,7 +23,10 @@ public class LanguageParser {
 
   public LanguagesApi parseLanguages() throws UnirestException, JsonProcessingException {
 
-    HttpResponse<String> response = Unirest.get(String.format("https://api.cognitive.microsofttranslator.com/languages?api-version=3.0")).asString();
+    HttpResponse<String> response = Unirest.get("https://api.cognitive.microsofttranslator.com/languages?api-version=3.0").asString();
+
+    logger.info("Supported languages get from API");
+    logger.info(response.getBody());
 
     return objectMapper.readValue(response.getBody(), LanguagesApi.class);
   }
