@@ -1,6 +1,7 @@
 package com.MikolajKrawczak.TranslatorApp;
 
 
+import com.MikolajKrawczak.TranslatorApp.service.ApiKeyReader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.coyote.Response;
 import org.apache.http.HttpResponse;
@@ -9,6 +10,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Scope;
