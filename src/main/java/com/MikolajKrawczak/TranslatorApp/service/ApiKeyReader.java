@@ -8,9 +8,9 @@ import java.util.stream.Stream;
 @Service
 public class ApiKeyReader {
 
-    public String readApiKey(){
-        StringBuilder stringBuilder = new StringBuilder();
-
-//        try (Stream<String> stream = Files.)
-    }
+//    public String readApiKey() {
+//        StringBuilder stringBuilder = new StringBuilder();
+//
+////        try (Stream<String> stream = Files.)
+//    }
 }
