@@ -36,7 +36,7 @@ public class TranslationsService {
                 return "fr";
             case "Polish":
                 return "pl";
-            case "russian":
+            case "Russian":
                 return "ru";
             default:
                 return "noInfo";
