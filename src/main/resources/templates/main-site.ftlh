@@ -24,6 +24,7 @@
         <h1 class="cover-heading">Enter text to translate</h1>
         <label for="inputText" class="sr-only">text to translate</label>
         <input id="inputText" name="inputText" type="text" class="form-control" placeholder=<#if textToTranslate??> ${textToTranslate} <#else> Choose </#if> "enter text">
+        <button class="alert-dark" type="submit">Translate </button>
     </form>
     <#if translatedText??>
 <#--    <table class="table table-light text-black-50">-->
