@@ -35,12 +35,13 @@ public class TranslationParser {
         HttpResponse<String> response;
 
         if (translationFrom.equals("noInfo")) {
-            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "&Subscription-Key=" + apiKeyReader.readApiKey())
+            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo)
                     .header("Content-type", "application/json")
+                    .header("OCP-Apim-Subscription-Key", "1709088099f24616aed3ac84dfd55b72")
                     .body(jsonInputString)
                     .asString();
         } else {
-            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "&from=" + translationFrom + "&Subscription-Key=" + apiKeyReader.readApiKey())
+            response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo + "&from=" + translationFrom)
                     .header("Content-type", "application/json")
                     .body(jsonInputString)
                     .asString();
