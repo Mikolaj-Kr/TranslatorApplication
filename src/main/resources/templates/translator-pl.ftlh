@@ -5,7 +5,7 @@
 
     <h1 class="cover-heading"> Wybierz język </h1>
     <form id="translationForm" action="/translator-main?language=${siteLanguage}" method="post">
-        from <select name="from">
+        z <select name="from">
 
             <option><#if from??> ${from} <#else> Wybierz </#if></option>
             <option> Recognize</option>
@@ -14,7 +14,7 @@
             </#list>
         </select>
 
-        to <select name="to">
+        na <select name="to">
             <option><#if to??> ${to} <#else> Wybierz </#if></option>
             <#list languages as language>
                 <option>${language.name}</option>
