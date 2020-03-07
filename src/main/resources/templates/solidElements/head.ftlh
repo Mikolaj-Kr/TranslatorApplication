@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html <#if siteLanguage = "pl"> lang="pl" <#else> lang = "en" </#if>>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,10 +20,10 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <h3 class="masthead-brand">Your Translator</h3>
+      <h3 class="masthead-brand"><#if siteLanguage = "pl"> Twój translator <#else> Your Translator </#if></h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="/translator-main">Translator</a>
-        <a class="nav-link active" href="/translator-supported-languages">Supported languages</a>
+        <a class="nav-link <#if siteLanguage = "en">active</#if>" href="/translator-main?language=en"><#if siteLanguage = "pl"> Angielska wersja <#else> English Version </#if></a>
+        <a class="nav-link <#if siteLanguage = "pl">active</#if>" href="/translator-main?language=pl"><#if siteLanguage = "pl"> Polska wersja <#else> Polish Version </#if> </a>
       </nav>
     </div>
   </header>
