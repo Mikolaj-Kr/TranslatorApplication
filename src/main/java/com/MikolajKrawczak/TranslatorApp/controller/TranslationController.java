@@ -35,7 +35,6 @@ public class TranslationController {
         if (siteLanguage == null){
             siteLanguage = "en";
         }
-
         params.put("languages", languagesService.getSupportedLanguages());
         params.put("from", from);
         params.put("to", to);
@@ -45,10 +44,18 @@ public class TranslationController {
 
         request.getSession().setAttribute("siteLanguage", siteLanguage);
 
+        if (to != null && to.equals("Choose") && siteLanguage.equals("en")){
+            params.put("translatedText", "Select language to translate");
+            text = null;
+        } else if (to != null && to.equals("Wybierz") && siteLanguage.equals("pl")) {
+            params.put("translatedText", "Wybierz język na jaki przetłumaczyć tekst");
+            text = null;
+        }
 
-        if (text != null) {
+        if (text != null && !to.equals("Choose")) {
           params.put("translatedText", translationsService.getTranslations(text, to, from).getTranslations().getText());
         }
+
         if(siteLanguage.equals("pl")) {
             return new ModelAndView("translator-pl", params);
         } else {
