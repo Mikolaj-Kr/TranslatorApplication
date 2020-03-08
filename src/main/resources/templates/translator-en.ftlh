@@ -22,7 +22,7 @@
         <div class="form-control">
         <h1 class="cover-heading">Enter text to translate</h1>
         <label for="inputText" class="sr-only">text to translate</label>
-        <input id="inputText" name="inputText" type="text" class="form-control" placeholder=<#if textToTranslate??> ${textToTranslate} <#else> Choose </#if> "enter text">
+        <input id="inputText" name="inputText" type="text" class="form-control" placeholder=<#if textToTranslate??> ${textToTranslate} <#else> text to Translate </#if> "enter text">
         <br>
             <button class="show" type="submit">Translate </button>
         </div>

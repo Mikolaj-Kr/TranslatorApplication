@@ -7,7 +7,7 @@
         z <select name="from">
 
             <option><#if from??> ${from} <#else> Wybierz </#if></option>
-            <option> Recognize</option>
+            <option> Rozpoznaj </option>
             <#list languages as language>
                 <option>${language.name}</option>
             </#list>
