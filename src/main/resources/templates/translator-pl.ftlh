@@ -1,7 +1,6 @@
 <#include "solidElements/head.ftlh">
 
 <main authorities="main" class="inner cover">
-    <h1 class="alert-danger"> Translator w fazie testów. Polskie znaki nie są obsługiwane </h1>
 
     <h1 class="cover-heading"> Wybierz język </h1>
     <form id="translationForm" action="/translator-main?language=${siteLanguage}" method="post">

@@ -1,7 +1,6 @@
 <#include "solidElements/head.ftlh">
 
 <main authorities="main" class="inner cover">
-    <h1 class="alert-danger"> Polish signs doesn't supported yet! </h1>
 
     <h1 class="cover-heading"> Choose language </h1>
     <form id="translationForm" action="/translator-main?language=${siteLanguage}" method="post">

@@ -7,6 +7,8 @@ import java.util.Map;
 import com.MikolajKrawczak.TranslatorApp.service.LanguagesService;
 import com.MikolajKrawczak.TranslatorApp.service.TranslationsService;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +30,14 @@ public class TranslationController {
     @Autowired
     LanguagesService languagesService;
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping("/translator-main")
-    public ModelAndView getMainSite(@RequestParam(value = "text", required = false) String text, @RequestParam(value = "from", required = false) String from, @RequestParam(value = "to", required = false) String to, @RequestParam(value = "language", required = false) String siteLanguage, HttpServletResponse response, HttpServletRequest request) throws IOException, UnirestException {
+    public ModelAndView getMainSite(@RequestParam(value = "from", required = false) String from, @RequestParam(value = "to", required = false) String to, @RequestParam(value = "language", required = false) String siteLanguage, HttpServletResponse response, HttpServletRequest request) throws IOException, UnirestException {
         Map<String, Object> params = new HashMap<>();
+
+        String text = (String) request.getSession().getAttribute("textToTranslate");
+        request.getSession().setAttribute("texToToTranslate", null);
 
         if (siteLanguage == null){
             siteLanguage = "en";
@@ -38,11 +45,13 @@ public class TranslationController {
         params.put("languages", languagesService.getSupportedLanguages());
         params.put("from", from);
         params.put("to", to);
-        params.put("textToTranslate", text);
+        params.put("textToTranslate",text);
         params.put("site", "main");
         params.put("siteLanguage", siteLanguage);
 
         request.getSession().setAttribute("siteLanguage", siteLanguage);
+
+
 
         if (to != null && to.equals("Choose") && siteLanguage.equals("en")){
             params.put("translatedText", "Select language to translate");
@@ -52,7 +61,8 @@ public class TranslationController {
             text = null;
         }
 
-        if (text != null && !to.equals("Choose")) {
+
+        if (text != null && to != null && !to.equals("Choose")) {
           params.put("translatedText", translationsService.getTranslations(text, to, from).getTranslations().getText());
         }
 
@@ -65,7 +75,10 @@ public class TranslationController {
 
     @PostMapping("/translator-main")
     public ResponseEntity<String> translateText(@RequestParam(value = "inputText") String inputText, @RequestParam(value = "from") String from, @RequestParam(value = "to") String to, HttpServletResponse response, HttpServletRequest request) throws IOException, UnirestException {
-        response.sendRedirect("/translator-main?text=" + inputText + "&from=" + from +"&to=" + to + "&language=" + request.getSession().getAttribute("siteLanguage"));
+        logger.info(inputText);
+        System.out.println(inputText);
+        request.getSession().setAttribute("textToTranslate", inputText);
+        response.sendRedirect("/translator-main?&from=" + from +"&to=" + to + "&language=" + request.getSession().getAttribute("siteLanguage"));
         return new ResponseEntity<>(inputText, HttpStatus.OK);
     }
 
