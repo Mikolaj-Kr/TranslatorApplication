@@ -37,7 +37,7 @@ public class TranslationParser {
         if (translationFrom.equals("noInfo")) {
             response = Unirest.post("https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=" + translationTo)
                     .header("Content-type", "application/json")
-                    .header("OCP-Apim-Subscription-Key", "ApiKey")
+                    .header("OCP-Apim-Subscription-Key", "1709088099f24616aed3ac84dfd55b72")
                     .body(jsonInputString)
                     .asString();
         } else {
